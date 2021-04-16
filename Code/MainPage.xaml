@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mide_tu_figura.MainPage"
+             BackgroundColor="#37529F">
+
+    <StackLayout BackgroundColor="#D9D9D9">
+        <Frame BackgroundColor="#37529F" Padding="16" CornerRadius="0">
+            <Label Text="Mide tu figura"
+                   HorizontalTextAlignment="Start"
+                   TextColor="White"
+                   FontSize="30"
+                   FontAttributes="Bold"/>
+        </Frame>
+
+        <StackLayout BackgroundColor="#fff"
+                     Margin="15, 15, 15, 15"
+                     Padding="10, 10, 10, 10">
+
+            <Label Text="Selecciona una figura para calcular sus propiedades"
+               HorizontalTextAlignment="Start"
+               TextColor="#595959"
+               FontSize="20"
+               FontAttributes="Bold"/>
+
+            <ListView ItemsSource="{Binding Figuras}"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      SelectedItem="{Binding FiguraSeleccionada}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.RowSpan="2"
+                                       Source="{Binding imgFigura}"
+                                       Aspect="AspectFit"
+                                       HeightRequest="80"
+                                       WidthRequest="80"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding txtFigura}"
+                                       FontAttributes="Bold"
+                                       FontSize="24"
+                                       TextColor="{Binding clrFigura}"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding txtFormula}"
+                                       FontSize="20"
+                                       TextColor="#AFABAB"
+                                       VerticalOptions="End"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
